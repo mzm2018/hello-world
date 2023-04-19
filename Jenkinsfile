@@ -12,7 +12,7 @@ pipeline {
     sh "echo $COV_STREAM"
     sh "cov-build --dir data /home/mzm/Devops/apache-maven-3.6.3/bin/mvn clean install"
     sh "cov-analyze --dir date --aggressiveness-level high --all --distrust-all --enable-audit-mode --rule --security --webapp-security-aggressiveness-level high"
-    sh "cov-commit-defects --dir data --url https://mzm-XPS-13-9380:8443/
+    sh "cov-commit-defects --dir data --url https://mzm-XPS-13-9380:8443/ --stream develop_mzm_project2
     coverityIssueCheck coverityInstanceUrl: 'https://mzm-XPS-13-9380:8443', markUnstable: true, projectName: 'develop_mzm_project1', viewName: 'Outstanding Issues'
 }
             }
