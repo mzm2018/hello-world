@@ -16,7 +16,8 @@ pipeline {
             steps {
                 withCoverityEnvironment(coverityInstanceUrl: 'https://mzm-XPS-13-9380:8443', createMissingProjectsAndStreams: true, projectName: 'develop_mzm_project3', streamName: 'develop_mzm_project3_stream', viewName: 'Outstanding Issues') {
     sh "echo $COV_STREAM"
-    sh "cov-build --dir data /home/mzm/Devops/apache-maven-3.6.3/bin/mvn clean install"
+    //sh "cov-build --dir data /home/mzm/Devops/apache-maven-3.6.3/bin/mvn clean install"
+    sh "cov-capture --project-dir /var/lib/jenkins/workspace/coverity_job --dir /var/lib/jenkins/workspace/coverity_job/idir"
     //sh "cov-analyze --dir data --all --webapp-security"
     sh "cov-analyze --dir /var/lib/jenkins/workspace/coverity_job/idir"
     //sh "cov-commit-defects --dir data --url https://mzm-XPS-13-9380:8443/ --stream develop_mzm_project3_stream --user admin --password Coverity@2023"
