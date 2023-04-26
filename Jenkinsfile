@@ -1,6 +1,10 @@
 pipeline {
     agent any
+    
     stages {
+        stage("Clean") {
+        deleteDir()
+    }
         stage('Clone Repo from github') {
             steps {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/mzm2018/hello-world.git']])
