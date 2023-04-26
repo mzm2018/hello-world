@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Coverity Scan') {
             steps {
-                withCoverityEnvironment(coverityInstanceUrl: 'https://mzm-XPS-13-9380:8443', createMissingProjectsAndStreams: true, projectName: 'develop_mzm_project2', streamName: 'develop_mzm_project2_stream', viewName: 'Outstanding Issues') {
+                withCoverityEnvironment(coverityInstanceUrl: 'https://mzm-XPS-13-9380:8443', createMissingProjectsAndStreams: true, projectName: 'develop_mzm_project3', streamName: 'develop_mzm_project3_stream', viewName: 'Outstanding Issues') {
     sh "echo $COV_STREAM"
     sh "cov-build --dir data /home/mzm/Devops/apache-maven-3.6.3/bin/mvn clean install"
     //sh "cov-analyze --dir data --all --webapp-security"
