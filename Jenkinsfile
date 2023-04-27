@@ -27,6 +27,7 @@ pipeline {
             }
         }
      stage ('Run Seeker IAST') {
+	     steps {
                 // seeker install.sh is located in the parent directory of current WebGoat folder
                 // the install.sh script was downloaded from Seeker UI from Connect Agent Wizard
                 sh "../install.sh"
@@ -37,5 +38,6 @@ pipeline {
 				    input message:'Finished Seeker Testing ?'
 			    }
             }
+     }  
         }
     }
