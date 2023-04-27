@@ -31,8 +31,8 @@ pipeline {
                 // seeker install.sh is located in the parent directory of current WebGoat folder
                 // the install.sh script was downloaded from Seeker UI from Connect Agent Wizard
                 sh "../install.sh"
-                sh "java '-javaagent:./seeker/seeker-agent.jar' -jar ./webapp/target/webapp.war &"
-                sh "ls -al target"
+                sh "java '-javaagent:./seeker/seeker-agent.jar' -jar ./coverity_pipeline/webapp/target/webapp.war &"
+                sh "ls -al coverity_pipeline/webapp/target/"
                 
                 timeout(time:1, unit:'DAYS') {
 				    input message:'Finished Seeker Testing ?'
