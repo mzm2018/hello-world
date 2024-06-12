@@ -24,8 +24,9 @@ pipeline {
     sh "cov-analyze --dir /var/lib/jenkins/workspace/coverity_job/idir"
     //sh "cov-commit-defects --dir data --url http://mzm-XPS-13-9380:8080/ --stream develop_mzm_project4_stream --user admin --password Coverity@2023"
     sh "cov-commit-defects --dir /var/lib/jenkins/workspace/coverity_job/idir --stream develop_mzm_project4_stream --user admin --password Coverity@2023 --url http://mzm-XPS-13-9380:8080/"                
-    //coverityIssueCheck coverityInstanceUrl: 'http://mzm-XPS-13-9380:8080', markUnstable: true, projectName: 'develop_mzm_project4', viewName: 'By Snapshot'
+    coverityIssueCheck coverityInstanceUrl: 'http://mzm-XPS-13-9380:8080', markUnstable: true, projectName: 'develop_mzm_project1', viewName: 'Outstanding Issues'
 }
+		}
             }
         }
      stage ('Run Seeker IAST') {
