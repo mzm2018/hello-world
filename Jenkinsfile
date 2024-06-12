@@ -15,14 +15,16 @@ pipeline {
         }
         stage('Coverity Scan') {
             steps {
-                withCoverityEnvironment(coverityInstanceUrl: 'http://mzm-XPS-13-9380:8080', createMissingProjectsAndStreams: true, projectName: 'develop_mzm_project1', streamName: 'develop_mzm_project1_stream', viewName: 'Outstanding Issues') {
-    sh "cov-build --dir $WORKSPACE /home/mzm/Devops/apache-maven-3.6.3/bin/mvn clean install -DskipTests=true"
-    // sh "cov-capture --project-dir /var/lib/jenkins/workspace/coverity_job --dir $WORKSPACE/idir"
+                withCoverityEnvironment(coverityInstanceUrl: 'http://mzm-XPS-13-9380:8080', createMissingProjectsAndStreams: true, projectName: 'develop_mzm_project1', sms: true, projectName: 'develop_mzm_project1', streamName: 'develop_mzm_project1_stream', viewName: 'Outstanding Issues') {
+    sh "echo $COV_STREAM"treamName: 'develop_mzm_project1_stream', viewName: 'Outstanding Issues') {
+    sh "echo $COV_STREAM"
+    //sh "cov-build --dir data /home/mzm/Devops/apache-maven-3.6.3/bin/mvn clean install -DskipTests=true"
+    sh "cov-capture --project-dir /var/lib/jenkins/workspace/coverity_job --dir /var/lib/jenkins/workspace/coverity_job/idir"
     //sh "cov-analyze --dir data --all --webapp-security"
-    sh "cov-analyze --dir $WORKSPACE/idir"
+    sh "cov-analyze --dir /var/lib/jenkins/workspace/coverity_job/idir"
     //sh "cov-commit-defects --dir data --url http://mzm-XPS-13-9380:8080/ --stream develop_mzm_project4_stream --user admin --password Coverity@2023"
-    sh "cov-commit-defects --dir $WORKSPACE/idir --stream develop_mzm_project1_stream --user admin --password Coverity@2023 --url http://mzm-XPS-13-9380:8080/"                
-    coverityIssueCheck coverityInstanceUrl: 'http://mzm-XPS-13-9380:8080', markUnstable: true, projectName: 'develop_mzm_project1'
+    sh "cov-commit-defects --dir /var/lib/jenkins/workspace/coverity_job/idir --stream develop_mzm_project4_stream --user admin --password Coverity@2023 --url http://mzm-XPS-13-9380:8080/"                
+    //coverityIssueCheck coverityInstanceUrl: 'http://mzm-XPS-13-9380:8080', markUnstable: true, projectName: 'develop_mzm_project4', viewName: 'By Snapshot'
 }
             }
         }
